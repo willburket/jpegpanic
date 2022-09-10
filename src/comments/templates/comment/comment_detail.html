@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>In App Template!! {{object.user}}</h1>
+{% endblock %}
+
+{% block another_content_area %}  
+<p>
+    {% if object.comment != None and object.comment != ' '%}
+    <pre>Comment: {{object.comment}} </pre>
+    Likes: {{object.likes}}
+    {% else %}
+    <pre>No Comments Yet... </pre>
+    {% endif %}
+</p>
+
+{% endblock %}

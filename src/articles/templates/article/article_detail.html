@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{object.title}}</h1>
+{% endblock %}
+
+{% block another_content_area %}  
+<p>
+    {% if object.description != None and object.description != ' ' %}
+    <pre>Description: {{object.description}}</pre>
+    {% else %}
+    <pre>Description Not Available</pre>
+    {% endif %}
+    <pre>Source: {{object.author}}</pre>
+    <pre>Date: {{object.date}}</pre>
+    <pre>Likes: {{object.likes}}</pre>
+    <pre>Link: <a href="{{object.link}}">{{object.link}}</a></pre>
+    <hr>
+    <h2 style="font-size: 20px;">Comments:</h2>
+    User: {{request.user}}
+    <form action ='.' method = 'POST'> {% csrf_token %} 
+        {{ form.as_p }}
+        <input type = 'submit' value = 'Save' />
+    </form>
+</p>
+
+
+
+
+
+{% endblock %}

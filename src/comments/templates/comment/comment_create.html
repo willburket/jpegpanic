@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Create Comment! </h1>
+{% endblock %}
+
+{% block another_content_area %}
+User: {{request.user}}
+<form action ='.' method = 'POST'> {% csrf_token %} 
+    {{ form.as_p }}
+    <input type = 'submit' value = 'Save' />
+</form>
+{% endblock %}

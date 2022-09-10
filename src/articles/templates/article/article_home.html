@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+<head>
+{% block content%}
+<h1 style="font-size:75px; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+    JPEG Panic
+</h1>
+<link rel="shortcut icon" href="#" />
+{% endblock %}
+
+</head>
+
+{% block another_content_area %}
+
+<div class = "left-content" style="width: 10%; float:left; border-top : solid;">
+    <div class = "container" style="margin: 4px">
+        <button type="button" class="btn btn-secondary btn-sm btn-block text-nowrap text-truncate w-100" style="border-radius: 4px; height: 40px;"> 
+            <p> 
+            News
+            </p>
+        </button>  
+    </div>
+    <div class = "container" style="margin: 4px">
+        <button type="button" class="btn btn-secondary btn-sm btn-block text-nowrap text-truncate w-100" style="border-radius: 4px; height: 40px;"> 
+            <p> 
+            Social
+            </p>
+        </button>  
+    </div>
+    <div class = "container" style="margin: 4px">
+        <button type="button" class="btn btn-secondary btn-sm btn-block text-nowrap text-truncate w-100" style="border-radius: 4px; height: 40px;"> 
+            <p> 
+            Polls
+            </p>
+        </button>  
+    </div>
+</div>
+
+<div class = "center-content" style="width: 40%; float:left; border-top: solid; border-left: solid; border-right: solid;">
+{% for item in articles %}
+    <div class="container text-truncate" style="margin : 4px;">              
+            <button type="button" class="btn btn-secondary btn-sm btn-block text-nowrap text-truncate w-100" style="border-radius: 8px; height: 75px;"> 
+                <p> 
+                <a href="{{item.link}}" style ="color: blue;" target="_blank">{{item.title}}</a><br>
+                {{item.author}}<br>
+                {{item.date}}<br>
+            </p>
+            </button>                   
+    </div>
+{% endfor %}
+</div>
+
+
+<div class = "right-content" style="width: 50%; float:right; border-top : solid;">
+    <div class = "container">
+            <p>
+                Article info here
+            </p>
+    </div>
+</div>
+
+{% endblock %}

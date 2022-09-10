@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>JPEG Panic</h1>
+<p>Welcome {{request.user}}!</p>
+<p>Home</p>
+{% endblock %}
+
+{% block another_content_area %}  
+<p>
+    {{article}}, {{likes}}
+</p>
+
+<ul>
+{% for sub_item in my_list %}
+    <li>{{sub_item}}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
