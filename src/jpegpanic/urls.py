@@ -37,4 +37,4 @@ urlpatterns = [
     path('comments/', comment_detail_view, name='comments'),
     path('create/', comment_create_view, name='create'),   
     
-] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root = settings.STATICFILES_DIRS)
