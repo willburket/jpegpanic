@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from pages.views import home_view, polls_view, tweets_view
 from articles.views import article_detail_view
 from comments.views import comment_detail_view
 from comments.views import comment_create_view
@@ -29,9 +28,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('', MainView.as_view(), name='home'),
-    path('articles-json/', ArticleJsonListView.as_view(), name = 'articles-json-view'),
-    path('polls/', polls_view, name='polls'),
-    path('tweets/', tweets_view, name='tweets'),
+    path('articles-json/<int:num_articles>/', ArticleJsonListView.as_view(), name = 'articles-json-view'),
     path('articles/', article_home_view, name='articles'),
     path('admin/', admin.site.urls),
     path('comments/', comment_detail_view, name='comments'),

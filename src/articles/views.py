@@ -6,7 +6,8 @@ from .scrape import daily_hodl_scraper
 from .forms import CommentForm
 from django.views.generic import View, TemplateView
 from django.http import JsonResponse
-# import pandas as pd
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.template import loader
 
 
 # Create your views here.
@@ -40,11 +41,17 @@ def article_home_view(request):
     return render(request, "article/article_home.html", context)
 
 class MainView(TemplateView):
-    
+    daily_hodl_scraper(1)
     template_name = 'article/article_home.html'
 
 class ArticleJsonListView(View):
     def get(self, *args, **kwargs):
-        daily_hodl_scraper(1)
-        articles = list(Article.objects.values())
+        print(kwargs)
+        upper = kwargs.get('num_articles')
+        lower = upper - 3
+        
+        articles = list(Article.objects.values()[lower:upper])
         return JsonResponse({'data': articles}, safe=False)
+
+
+
