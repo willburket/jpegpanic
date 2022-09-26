@@ -49,9 +49,10 @@ class ArticleJsonListView(View):
         print(kwargs)
         upper = kwargs.get('num_articles')
         lower = upper - 3
-        
+        articles_size = len(Article.objects.all())
+        max_size = True if upper >= articles_size else False
         articles = list(Article.objects.values()[lower:upper])
-        return JsonResponse({'data': articles}, safe=False)
+        return JsonResponse({'data': articles, 'max': max_size}, safe=False)
 
 
 
