@@ -1,9 +1,10 @@
 
 let visible = 3
 
-const articlesBox = document.getElementById('articles-box')
+
 
 window.onload = function(){
+    const articlesBox = document.getElementById('articles-box')
     const loadBtn = document.getElementById('load-btn')
     const spinnerBox = document.getElementById('spinner-box')
     
@@ -18,10 +19,17 @@ window.onload = function(){
                 spinnerBox.classList.remove('not-visible')
                 setTimeout(()=>{
                     spinnerBox.classList.add('not-visible')
-                    data.map(post=>{
-                        console.log(post.id)
+                    data.map(article=>{
+                        console.log(article.id)
+                        articlesBox.innerHTML += `<div class="card p-3 mt-3 mb-3">
+                                                ${article.title}
+                                                <br>
+                                                ${article.source}
+                                                <br>
+                                                ${article.date}
+                                            </div>`
                     })
-                ,500})
+                },500)
                 
                 if(maximum_size){
                     console.log('Done')
@@ -35,6 +43,7 @@ window.onload = function(){
     }
 
     handleGetData()
+
     loadBtn.addEventListener('click', ()=>{
         visible += 3
         handleGetData()
