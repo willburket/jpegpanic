@@ -7,6 +7,7 @@ window.onload = function(){
     const articlesBox = document.getElementById('articles-box')
     const loadBtn = document.getElementById('load-btn')
     const spinnerBox = document.getElementById('spinner-box')
+    const contentBox = document.getElementById('content-box')
     
     const handleGetData = () => {
         $.ajax({
@@ -21,13 +22,15 @@ window.onload = function(){
                     spinnerBox.classList.add('not-visible')
                     data.map(article=>{
                         console.log(article.id)
-                        articlesBox.innerHTML += `<div class="card p-3 mt-3 mb-3">
-                                                ${article.title}
-                                                <br>
-                                                ${article.source}
-                                                <br>
-                                                ${article.date}
-                                            </div>`
+                        articlesBox.innerHTML += `<div class="card">
+                        <button id="content-btn" type="button" class="btn btn-secondary btn-sm btn-block text-nowrap text-truncate w-100" style="border-radius: 8px; height: 75px;"> 
+                                    ${article.title}
+                                    <br>
+                                    ${article.author}
+                                    <br>
+                                    ${article.date}
+                        </button>
+                        </div>`
                     })
                 },500)
                 
@@ -41,6 +44,11 @@ window.onload = function(){
         })
     
     }
+    const contentBtn = document.getElementById('content-btn')
+
+    // contentBtn.addEventListener('click', ()=>{
+
+    // })
 
     handleGetData()
 
@@ -48,6 +56,9 @@ window.onload = function(){
         visible += 3
         handleGetData()
     })
-}
+
+    
+}   
+
 
 
