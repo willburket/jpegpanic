@@ -41,14 +41,15 @@ def article_home_view(request):
     return render(request, "article/article_home.html", context)
 
 class MainView(TemplateView):
-    daily_hodl_scraper(1)
+    
     template_name = 'article/article_home.html'
 
 class ArticleJsonListView(View):
+    daily_hodl_scraper(1)
     def get(self, *args, **kwargs):
         print(kwargs)
         upper = kwargs.get('num_articles')
-        lower = upper - 3
+        lower = upper - 9
         articles_size = len(Article.objects.all())
         max_size = True if upper >= articles_size else False
         articles = list(Article.objects.values()[lower:upper])

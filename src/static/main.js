@@ -1,5 +1,5 @@
 
-let visible = 3
+let visible = 9
 
 
 
@@ -53,7 +53,7 @@ window.onload = function(){
     handleGetData()
 
     loadBtn.addEventListener('click', ()=>{
-        visible += 3
+        visible += 10
         handleGetData()
     })
 
